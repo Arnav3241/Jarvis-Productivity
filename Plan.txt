@@ -1,0 +1,11 @@
+1. Basic File Structure
+2. Main Chat Page
+3. Chat Page
+4. Voice Change Feature
+5. Add basic LLM Support
+6. Add Chat Interface.
+7. Make the GUI Look Awsome.
+8. Add Pomdoro Mode. 
+9. Add Focus Mode.
+10. Add a Task List reminder/updater Assistant.
+11. Add hundreds of Features.
