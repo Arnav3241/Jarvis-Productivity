@@ -4,8 +4,10 @@
 4. Voice Change Feature
 5. Add basic LLM Support
 6. Add Chat Interface.
-7. Make the GUI Look Awsome.
-8. Add Pomdoro Mode. 
+7. Make the GUI Look Awesome.
+8. Add Pomodoro Mode. 
 9. Add Focus Mode.
 10. Add a Task List reminder/updater Assistant.
 11. Add hundreds of Features.
+
+NOTE: In the prompt, add to not give v long sentences more than like 20 words

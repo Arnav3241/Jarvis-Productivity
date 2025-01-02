@@ -12,7 +12,7 @@
 </head>
 <body>
   <div class="body">
-    <div class="Loader">
+    <div id="Loader" class="Loader">
       <!-- From Uiverse.io by jeremyssocial  -->
       <div class="terminal-loader top-[32vh]">
         <div class="terminal-header">
@@ -26,15 +26,31 @@
         <div class="text">Loading...</div>
       </div>
 
-      <div class="text-white text-xl absolute bottom-5 w-[100vw] text-center">
+      <div class="text-slate-900 text-white text-xl absolute bottom-5 w-[100vw] text-center">
         Jarvis Productivity: Boost your productivity exponentially.
       </div>
     </div>
-    <div class="Main">
-      <div class="Main-window"></div>
-      <div class="Pomodoro-window"></div>
-      <div class="Alarm-window"></div>
+    <div id="Main-window" class="h-[100vh] w-[100vw] bg-black flex">
+      <div class="h-[100vh] w-[3vw] bg-black border-r-2 border-slate-900" id="Sidebar">
+        
+      </div>
+      <div class="h-[100vh] w-[77vw] flex-col" id="Main_Content">
+        <div class="w-[77vw] h-[8vh] bg-black border-b-2 border-r-2 border-slate-900"></div>
+        <div class="w-[77vw] h-[84vh] bg-black border-r-2 border-slate-900 flex items-center justify-center">
+          <img src="Assets/Images/Voice.gif" alt="Listener.gif" style="width:600px; height:600px;" loading="lazy">
+        </div>
+        <div class="w-[77vw] h-[8vh] bg-black border-t-2 border-r-2 border-slate-900"></div>
+      </div>
+      <div class="h-[100vh] w-[20vw] bg-black " id="Main_Content">
+        <div class="w-[20vw] h-[8vh]"></div>
+        <div class="w-[20vw] h-[84vh]">
+          <div class="w-[20vw] h-[42vh]"></div>
+          <div class="w-[20vw] h-[50vh]"></div>
+        </div>
+      </div>
     </div>
+    <div id="Pomodoro-window"></div>
+    <div id="Alarm-window"></div>
   </div>
   <script src="JS/index.js"></script>
   <script src="JS/tailwindCDN.js"></script>

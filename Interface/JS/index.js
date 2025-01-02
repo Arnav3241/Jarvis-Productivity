@@ -4,7 +4,9 @@ setInterval(() => {
 }, 2000);
 
 function switchToMainWindow() {
-    
+  document.getElementById("Loader").style.display = "none";
 }
 
-eel.expose();
+switchToMainWindow()
+
+eel.expose(switchToMainWindow);

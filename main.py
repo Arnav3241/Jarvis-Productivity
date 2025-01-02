@@ -1,12 +1,15 @@
 """
 Made by Arnav Singh (https://github.com/Arnav3241) with 💖
 """
+from Functions.Speak import Speak
 import multiprocessing
 import threading
 import time
 import eel
 import sys
 import os
+
+
 
 # Important Variables:
 ChatPause = multiprocessing.Value("b", False)

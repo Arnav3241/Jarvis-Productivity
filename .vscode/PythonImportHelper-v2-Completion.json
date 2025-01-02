@@ -1,5 +1,67 @@
 [
     {
+        "label": "playsound",
+        "importPath": "playsound",
+        "description": "playsound",
+        "isExtraImport": true,
+        "detail": "playsound",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "base64",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "base64",
+        "description": "base64",
+        "detail": "base64",
+        "documentation": {}
+    },
+    {
+        "label": "uuid",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uuid",
+        "description": "uuid",
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
         "label": "print_function",
         "importPath": "__future__",
         "description": "__future__",
@@ -90,6 +152,14 @@
         "documentation": {}
     },
     {
+        "label": "Speak",
+        "importPath": "Functions.Speak",
+        "description": "Functions.Speak",
+        "isExtraImport": true,
+        "detail": "Functions.Speak",
+        "documentation": {}
+    },
+    {
         "label": "multiprocessing",
         "kind": 6,
         "isExtraImport": true,
@@ -126,12 +196,93 @@
         "documentation": {}
     },
     {
-        "label": "os",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
+        "label": "split_into_sentences",
+        "kind": 2,
+        "importPath": "Functions.Speak",
+        "description": "Functions.Speak",
+        "peekOfCode": "def split_into_sentences(text: str) -> list[str]:\n  text = \" \" + text + \"  \"\n  text = text.replace(\"\\n\",\" \")\n  text = re.sub(prefixes,\"\\\\1<prd>\",text)\n  text = re.sub(websites,\"<prd>\\\\1\",text)\n  text = re.sub(digits + \"[.]\" + digits,\"\\\\1<prd>\\\\2\",text)\n  text = re.sub(multiple_dots, lambda match: \"<prd>\" * len(match.group(0)) + \"<stop>\", text)\n  if \"Ph.D\" in text: text = text.replace(\"Ph.D.\",\"Ph<prd>D<prd>\")\n  # text = re.sub(\"\\s\" + alphabets + \"[.] \",\" \\\\1<prd> \",text)\n  text = re.sub(r\"\\s\" + alphabets + r\"[.] \", r\" \\1<prd> \", text)",
+        "detail": "Functions.Speak",
+        "documentation": {}
+    },
+    {
+        "label": "text_to_speech",
+        "kind": 2,
+        "importPath": "Functions.Speak",
+        "description": "Functions.Speak",
+        "peekOfCode": "def text_to_speech(api_endpoint, text, voice, request_data_key, verbose=False):\n  \"\"\"\n  Available Voice Options:\n    - en_au_001\n    - en_male_narration\n    - en_male_funny\n    - en_male_cody\n    - en_female_emotional\n    - en_us_rocket\n    - en_female_f08_salut_damour",
+        "detail": "Functions.Speak",
+        "documentation": {}
+    },
+    {
+        "label": "Speak",
+        "kind": 2,
+        "importPath": "Functions.Speak",
+        "description": "Functions.Speak",
+        "peekOfCode": "def Speak(Text, Voice):\n  weilbyte_api_endpoint = \"https://tiktok-tts.weilnet.workers.dev/api/generation\"\n  Sentences = split_into_sentences(Text)\n  for Sentence in Sentences:\n    print(f\"Currently speaking: {Sentence}\")\n    text_to_speech(weilbyte_api_endpoint, Sentence, Voice, \"data\")\nif __name__ == \"__main__\":\n  Speak(\"Despite the heavy rain, which made the streets slippery and difficult to navigate, and the loud thunder that echoed across the city, we managed to continue our journey, passing by old buildings that had seen countless generations come and go, while the sound of distant conversations and the rustle of leaves in the trees filled the air, creating a mix of tranquility and excitement, as we ventured forward, unsure of what lay ahead but certain that every step we took would bring us closer to our destination, wherever that might be, in this unpredictable and fascinating world.\", \"en_male_cody\")",
+        "detail": "Functions.Speak",
+        "documentation": {}
+    },
+    {
+        "label": "prefixes",
+        "kind": 5,
+        "importPath": "Functions.Speak",
+        "description": "Functions.Speak",
+        "peekOfCode": "prefixes = \"(Mr|St|Mrs|Ms|Dr)[.]\"\nsuffixes = \"(Inc|Ltd|Jr|Sr|Co)\"\nstarters = r\"(Mr|Mrs|Ms|Dr|Prof|Capt|Cpt|Lt|He\\s|She\\s|It\\s|They\\s|Their\\s|Our\\s|We\\s|But\\s|However\\s|That\\s|This\\s|Wherever)\"\nacronyms = \"([A-Z][.][A-Z][.](?:[A-Z][.])?)\"\nwebsites = \"[.](com|net|org|io|gov|edu|me)\"\ndigits = \"([0-9])\"\nmultiple_dots = r'\\.{2,}'\ndef split_into_sentences(text: str) -> list[str]:\n  text = \" \" + text + \"  \"\n  text = text.replace(\"\\n\",\" \")",
+        "detail": "Functions.Speak",
+        "documentation": {}
+    },
+    {
+        "label": "suffixes",
+        "kind": 5,
+        "importPath": "Functions.Speak",
+        "description": "Functions.Speak",
+        "peekOfCode": "suffixes = \"(Inc|Ltd|Jr|Sr|Co)\"\nstarters = r\"(Mr|Mrs|Ms|Dr|Prof|Capt|Cpt|Lt|He\\s|She\\s|It\\s|They\\s|Their\\s|Our\\s|We\\s|But\\s|However\\s|That\\s|This\\s|Wherever)\"\nacronyms = \"([A-Z][.][A-Z][.](?:[A-Z][.])?)\"\nwebsites = \"[.](com|net|org|io|gov|edu|me)\"\ndigits = \"([0-9])\"\nmultiple_dots = r'\\.{2,}'\ndef split_into_sentences(text: str) -> list[str]:\n  text = \" \" + text + \"  \"\n  text = text.replace(\"\\n\",\" \")\n  text = re.sub(prefixes,\"\\\\1<prd>\",text)",
+        "detail": "Functions.Speak",
+        "documentation": {}
+    },
+    {
+        "label": "starters",
+        "kind": 5,
+        "importPath": "Functions.Speak",
+        "description": "Functions.Speak",
+        "peekOfCode": "starters = r\"(Mr|Mrs|Ms|Dr|Prof|Capt|Cpt|Lt|He\\s|She\\s|It\\s|They\\s|Their\\s|Our\\s|We\\s|But\\s|However\\s|That\\s|This\\s|Wherever)\"\nacronyms = \"([A-Z][.][A-Z][.](?:[A-Z][.])?)\"\nwebsites = \"[.](com|net|org|io|gov|edu|me)\"\ndigits = \"([0-9])\"\nmultiple_dots = r'\\.{2,}'\ndef split_into_sentences(text: str) -> list[str]:\n  text = \" \" + text + \"  \"\n  text = text.replace(\"\\n\",\" \")\n  text = re.sub(prefixes,\"\\\\1<prd>\",text)\n  text = re.sub(websites,\"<prd>\\\\1\",text)",
+        "detail": "Functions.Speak",
+        "documentation": {}
+    },
+    {
+        "label": "acronyms",
+        "kind": 5,
+        "importPath": "Functions.Speak",
+        "description": "Functions.Speak",
+        "peekOfCode": "acronyms = \"([A-Z][.][A-Z][.](?:[A-Z][.])?)\"\nwebsites = \"[.](com|net|org|io|gov|edu|me)\"\ndigits = \"([0-9])\"\nmultiple_dots = r'\\.{2,}'\ndef split_into_sentences(text: str) -> list[str]:\n  text = \" \" + text + \"  \"\n  text = text.replace(\"\\n\",\" \")\n  text = re.sub(prefixes,\"\\\\1<prd>\",text)\n  text = re.sub(websites,\"<prd>\\\\1\",text)\n  text = re.sub(digits + \"[.]\" + digits,\"\\\\1<prd>\\\\2\",text)",
+        "detail": "Functions.Speak",
+        "documentation": {}
+    },
+    {
+        "label": "websites",
+        "kind": 5,
+        "importPath": "Functions.Speak",
+        "description": "Functions.Speak",
+        "peekOfCode": "websites = \"[.](com|net|org|io|gov|edu|me)\"\ndigits = \"([0-9])\"\nmultiple_dots = r'\\.{2,}'\ndef split_into_sentences(text: str) -> list[str]:\n  text = \" \" + text + \"  \"\n  text = text.replace(\"\\n\",\" \")\n  text = re.sub(prefixes,\"\\\\1<prd>\",text)\n  text = re.sub(websites,\"<prd>\\\\1\",text)\n  text = re.sub(digits + \"[.]\" + digits,\"\\\\1<prd>\\\\2\",text)\n  text = re.sub(multiple_dots, lambda match: \"<prd>\" * len(match.group(0)) + \"<stop>\", text)",
+        "detail": "Functions.Speak",
+        "documentation": {}
+    },
+    {
+        "label": "digits",
+        "kind": 5,
+        "importPath": "Functions.Speak",
+        "description": "Functions.Speak",
+        "peekOfCode": "digits = \"([0-9])\"\nmultiple_dots = r'\\.{2,}'\ndef split_into_sentences(text: str) -> list[str]:\n  text = \" \" + text + \"  \"\n  text = text.replace(\"\\n\",\" \")\n  text = re.sub(prefixes,\"\\\\1<prd>\",text)\n  text = re.sub(websites,\"<prd>\\\\1\",text)\n  text = re.sub(digits + \"[.]\" + digits,\"\\\\1<prd>\\\\2\",text)\n  text = re.sub(multiple_dots, lambda match: \"<prd>\" * len(match.group(0)) + \"<stop>\", text)\n  if \"Ph.D\" in text: text = text.replace(\"Ph.D.\",\"Ph<prd>D<prd>\")",
+        "detail": "Functions.Speak",
+        "documentation": {}
+    },
+    {
+        "label": "multiple_dots",
+        "kind": 5,
+        "importPath": "Functions.Speak",
+        "description": "Functions.Speak",
+        "peekOfCode": "multiple_dots = r'\\.{2,}'\ndef split_into_sentences(text: str) -> list[str]:\n  text = \" \" + text + \"  \"\n  text = text.replace(\"\\n\",\" \")\n  text = re.sub(prefixes,\"\\\\1<prd>\",text)\n  text = re.sub(websites,\"<prd>\\\\1\",text)\n  text = re.sub(digits + \"[.]\" + digits,\"\\\\1<prd>\\\\2\",text)\n  text = re.sub(multiple_dots, lambda match: \"<prd>\" * len(match.group(0)) + \"<stop>\", text)\n  if \"Ph.D\" in text: text = text.replace(\"Ph.D.\",\"Ph<prd>D<prd>\")\n  # text = re.sub(\"\\s\" + alphabets + \"[.] \",\" \\\\1<prd> \",text)",
+        "detail": "Functions.Speak",
         "documentation": {}
     },
     {
