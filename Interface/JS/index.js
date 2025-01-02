@@ -3,10 +3,17 @@ setInterval(() => {
   eel.Heartbeat();
 }, 2000);
 
-function switchToMainWindow() {
+function switchToVoiceMainWindow() {
   document.getElementById("Loader").style.display = "none";
+  document.getElementById("Chat").style.display = "none";
 }
 
-switchToMainWindow()
+function switchToChatMainWindow() {
+  document.getElementById("Loader").style.display = "none";
+  document.getElementById("Voice").style.display = "none";
+}
 
-eel.expose(switchToMainWindow);
+switchToChatMainWindow()
+
+eel.expose(switchToVoiceMainWindow);
+eel.expose(switchToChatMainWindow);
